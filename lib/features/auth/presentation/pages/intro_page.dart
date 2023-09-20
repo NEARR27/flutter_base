@@ -39,26 +39,6 @@ class _IntroPageState extends State<IntroPage> {
               width: 100,
               height: 10,
             ),
-            Column(
-              children: const [
-                MyButton(
-                  iconUrl: 'assets/images/ic_google.png',
-                  text: "Sign up with Google",
-                ),
-                SizedBox(height: 20),
-                MyButton(
-                  iconUrl: 'assets/images/ic_facebook.png',
-                  text: "Sign up with Facebook",
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Or",
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
-              ],
-            ),
             const SizedBox(height: 20),
             Column(
               children: [

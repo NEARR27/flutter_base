@@ -111,7 +111,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         hintText: "password",
                       ),
                     ),
-                    const SizedBox(height: 120),
+                    const SizedBox(height: 30),
                     // Sign Up for Button ----------------------------------
                     MyButtonTwo(
                       text: "Continue",

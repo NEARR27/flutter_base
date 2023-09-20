@@ -50,22 +50,8 @@ class _SignInPageState extends State<SignInPage> {
             ),
             Column(
               children: const [
-                MyButton(
-                  iconUrl: 'assets/images/ic_google.png',
-                  text: "Log in with Google",
-                ),
+                
                 SizedBox(height: 20),
-                MyButton(
-                  iconUrl: 'assets/images/ic_facebook.png',
-                  text: "Log in with Google",
-                ),
-                SizedBox(height: 20),
-                Text(
-                  "Or",
-                  style: TextStyle(
-                    color: Colors.grey,
-                  ),
-                ),
               ],
             ),
             Form(
@@ -106,14 +92,7 @@ class _SignInPageState extends State<SignInPage> {
               children: [
                 MyButtonTwo(text: "Log in", onPressed: signIn),
                 const SizedBox(height: 30),
-                const Text(
-                  "Forgot Password",
-                  style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    fontSize: 18,
-                    color: Color(0xFF265AE8),
-                  ),
-                ),
+                
               ],
             ),
           ],
