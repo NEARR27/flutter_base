@@ -23,111 +23,121 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Form(
-            key: _signUpGlobalKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 50),
-
-                // Back Icon Button
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    Icons.chevron_left,
-                    size: 40,
-                  ),
-                ),
-                const SizedBox(height: 30),
-                Row(
-                  children: const [
-                    SizedBox(width: 10),
-                    Text(
-                      "Enter your details",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ],
-                ),
-                const SizedBox(height: 55),
-                Column(
+      body: Stack(
+        children: [
+          // Fondo de imagen
+          Image.asset(
+            "assets/images/Hanamaru.jpg",
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: Form(
+                key: _signUpGlobalKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // Name Input -------------------------------------
-                    TextFormField(
-                      controller: nameController,
-                      validator: AuthValidator.isNameValid,
-                      decoration: const InputDecoration(
-                        hintText: "user name",
-                      ),
-                    ),
+                    const SizedBox(height: 50),
 
-                    // Email Input -------------------------------------
-                    const SizedBox(height: 40),
-                    TextFormField(
-                      controller: emailController,
-                      validator: AuthValidator.isEmailValid,
-                      decoration: const InputDecoration(
-                        hintText: "email addresss",
-                      ),
-                    ),
-
-                    // Password Input -------------------------------------
-                    const SizedBox(height: 40),
-                    TextFormField(
-                      controller: passwordController,
-                      obscureText: passwordSee,
-                      validator: AuthValidator.isPasswordValid,
-                      decoration: InputDecoration(
-                        hintText: "password",
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            passwordSee = !passwordSee;
-                            setState(() {});
-                          },
-                          child: Icon(
-                            passwordSee
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                          ),
-                        ),
-                      ),
-                    ),
-
-                    // Retry Password Input -------------------------------------
-                    const SizedBox(height: 40),
-                    TextFormField(
-                      controller: passwordRetryController,
-                      obscureText: passwordSee,
-                      validator: AuthValidator.isPasswordValid,
-                      decoration: const InputDecoration(
-                        hintText: "password",
+                    // Botón de Icono de Volver
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                      child: const Icon(
+                        Icons.chevron_left,
+                        size: 40,
                       ),
                     ),
                     const SizedBox(height: 30),
-                    // Sign Up for Button ----------------------------------
-                    MyButtonTwo(
-                      text: "Continue",
-                      onPressed: signUpButton,
+                    Row(
+                      children: const [
+                        SizedBox(width: 10),
+                        Text(
+                          "Ingresa tus datos",
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 55),
+                    Column(
+                      children: [
+                        // Entrada de Nombre -------------------------------------
+                        TextFormField(
+                          controller: nameController,
+                          validator: AuthValidator.isNameValid,
+                          decoration: const InputDecoration(
+                            hintText: "nombre de usuario",iconColor: Colors.black
+                          ),
+                        ),
+
+                        // Entrada de Correo Electrónico -------------------------------------
+                        const SizedBox(height: 40),
+                        TextFormField(
+                          controller: emailController,
+                          validator: AuthValidator.isEmailValid,
+                          decoration: const InputDecoration(
+                            hintText: "dirección de correo electrónico",
+                          ),
+                        ),
+
+                        // Entrada de Contraseña -------------------------------------
+                        const SizedBox(height: 40),
+                        TextFormField(
+                          controller: passwordController,
+                          obscureText: passwordSee,
+                          validator: AuthValidator.isPasswordValid,
+                          decoration: InputDecoration(
+                            hintText: "contraseña",
+                            suffixIcon: GestureDetector(
+                              onTap: () {
+                                passwordSee = !passwordSee;
+                                setState(() {});
+                              },
+                              child: Icon(
+                                passwordSee
+                                    ? Icons.visibility_off_outlined
+                                    : Icons.visibility_outlined,
+                              ),
+                            ),
+                          ),
+                        ),
+
+                        // Entrada de Confirmación de Contraseña -------------------------------------
+                        const SizedBox(height: 40),
+                        TextFormField(
+                          controller: passwordRetryController,
+                          obscureText: passwordSee,
+                          validator: AuthValidator.isPasswordValid,
+                          decoration: const InputDecoration(
+                            hintText: "confirmar contraseña",
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        // Botón "Continuar" ----------------------------------
+                        MyButtonTwo(
+                          text: "Continuar",
+                          onPressed: signUpButton,
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
+              ),
             ),
           ),
-        ),
+        ],
       ),
     );
   }
 
-  // when the button is pressed
+  // Cuando se presiona el botón
   void signUpButton() {
     if (_signUpGlobalKey.currentState!.validate()) {
       final message = authController.registration(
@@ -138,8 +148,8 @@ class _SignUpPageState extends State<SignUpPage> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           content: Text(message["message"] as String),
-          margin:
-              EdgeInsets.only(bottom: MediaQuery.of(context).size.height * .9),
+          margin: EdgeInsets.only(
+              bottom: MediaQuery.of(context).size.height * .9),
           behavior: SnackBarBehavior.floating,
           duration: const Duration(seconds: 5),
           shape: const StadiumBorder(),
@@ -150,7 +160,7 @@ class _SignUpPageState extends State<SignUpPage> {
     }
   }
 
-  // textController exits when finished
+  // Los controladores de texto se eliminan cuando se finaliza
   @override
   void dispose() {
     nameController.dispose();

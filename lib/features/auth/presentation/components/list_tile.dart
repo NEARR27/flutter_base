@@ -23,7 +23,7 @@ class _ListTileeState extends State<ListTilee> {
     if (datas.isEmpty) {
       return [
         const Text(
-          "Not Found User",
+          "Usuario no encontrado!!! Unu",
         ),
       ];
     }
@@ -32,7 +32,7 @@ class _ListTileeState extends State<ListTilee> {
         ListTile(
           leading: const Icon(
             Icons.perm_identity,
-            color: Colors.grey,
+            color: Colors.black,
             size: 40,
           ),
           title: Text(
@@ -40,12 +40,17 @@ class _ListTileeState extends State<ListTilee> {
             style: const TextStyle(
               fontWeight: FontWeight.w500,
               fontSize: 20,
+              color: Colors.black,
+              fontStyle: FontStyle.italic
             ),
           ),
           subtitle: Text(
             item["email"] as String,
             style: const TextStyle(
               fontSize: 18,
+              color: Colors.black,
+              fontStyle: FontStyle.italic
+
             ),
           ),
           trailing: TextButton(
@@ -55,7 +60,7 @@ class _ListTileeState extends State<ListTilee> {
             },
             child: const Icon(
               Icons.delete_outline,
-              color: Colors.grey,
+              color: Colors.black,
               size: 35,
             ),
           ),

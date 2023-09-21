@@ -54,7 +54,7 @@ class _IconWidgetState extends State<IconWidget> {
               children: [
                 const Icon(
                   Icons.perm_identity,
-                  color: Colors.grey,
+                  color: Colors.black,
                 ),
                 const SizedBox(width: 5),
                 Text(
@@ -62,7 +62,7 @@ class _IconWidgetState extends State<IconWidget> {
                   style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w300,
-                      color: Colors.grey),
+                      color: Colors.black),
                 ),
                 const SizedBox(width: 19),
                 const Icon(
@@ -75,7 +75,7 @@ class _IconWidgetState extends State<IconWidget> {
                   style: const TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w300,
-                      color: Colors.grey),
+                      color: Colors.black),
                 ),
               ],
             )

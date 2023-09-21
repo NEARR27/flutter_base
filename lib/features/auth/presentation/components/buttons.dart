@@ -8,7 +8,7 @@ class MyButton extends StatelessWidget {
     super.key,
     this.onPressed,
     this.iconUrl,
-    required this.text,
+    required this.text, required MaterialColor buttonColor, required Color textColor,
   });
 
   @override
@@ -16,8 +16,7 @@ class MyButton extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        minimumSize: const Size(double.infinity, 60),
-        backgroundColor: const Color(0xFFEDEEF0),
+        minimumSize: const Size(double.infinity, 20),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -65,13 +64,12 @@ class MyButtonTwo extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        minimumSize: const Size(double.infinity, 60),
-        backgroundColor: const Color(0xFF265AE8),
+        minimumSize: const Size(double.infinity, 30),
       ),
       child: Text(
         text,
         style: const TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontSize: 20,
         ),
       ),

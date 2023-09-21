@@ -7,7 +7,7 @@ import '../components/buttons.dart';
 
 class IntroPage extends StatefulWidget {
   static const String id = "intro_page";
-  const IntroPage({super.key});
+  const IntroPage({Key? key}) : super(key: key);
 
   @override
   State<IntroPage> createState() => _IntroPageState();
@@ -17,79 +17,75 @@ class _IntroPageState extends State<IntroPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          children: [
-            const SizedBox(
-              width: 100,
-              height: 10,
-            ),
-            const Center(
-              child: Text(
-                "Welcome back!\nSign in to continue!",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                ),
+      body: Stack(
+        children: [
+          // Fondo de imagen
+          Image.asset(
+            "assets/images/Hanamaru.jpg",
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Bienvenido",
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  Text(
+                    "Inicia sesión para continuar!",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.blue,
+                    ),
+                  ),
+                  SizedBox(height: 40),
+                  MyButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, SignUpPage.id);
+                    },
+                    text: "¡Crea una cuenta aquí!",
+                    buttonColor: Colors.blue,
+                    textColor: Colors.transparent,
+                  ),
+                  SizedBox(height: 40),
+                  Text(
+                    "¿Ya tienes una cuenta?",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: Colors.blue,
+                      fontSize: 14,
+                    ),
+                  ),
+                  SizedBox(height: 20),
+                  RichText(
+                    text: TextSpan(
+                      text: "Inicia Sesión!",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
+                      ),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          Navigator.pushNamed(context, SignInPage.id);
+                        },
+                    ),
+                  ),
+                ],
               ),
             ),
-            const SizedBox(
-              width: 100,
-              height: 10,
-            ),
-            const SizedBox(height: 20),
-            Column(
-              children: [
-                MyButton(
-                  onPressed: () {
-                    Navigator.pushNamed(context, SignUpPage.id);
-                  },
-                  text: "Sign up with email",
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "By signing up you are agreed with our \nfriendly terms and condition.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF404653),
-                    letterSpacing: 0.5,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 77),
-                const Text(
-                  "Already have an account?",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: Color(0xFF383838),
-                    letterSpacing: 0.5,
-                    fontSize: 14,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-                const SizedBox(height: 27),
-                RichText(
-                  text: TextSpan(
-                    text: "Sign in",
-                    style: const TextStyle(
-                      color: Color(0xFF265AE8),
-                      fontSize: 18,
-                      fontWeight: FontWeight.w500,
-                    ),
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        print("salom");
-                        Navigator.pushNamed(context, SignInPage.id);
-                      },
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
