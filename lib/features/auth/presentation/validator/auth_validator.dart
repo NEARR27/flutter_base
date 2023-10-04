@@ -1,11 +1,9 @@
 class AuthValidator {
   static String? isNameValid(String? text) {
-    if (text != null
-        /*&& text.contains(RegExp(r"[A-Z][a-z]{3}"))*/
-        ) {
+    if (text != null && text.isNotEmpty) {
       return null;
     } else {
-      return "Name in not valid";
+      return "User name in not valid";
     }
   }
 
@@ -18,7 +16,7 @@ class AuthValidator {
   }
 
   static String? isPasswordValid(String? text) {
-    if (text != null && text.contains(RegExp(r"[a-z]{3}[0-9]{3}"))) {
+    if (text != null) {
       return null;
     } else {
       return "Password in not valid";
