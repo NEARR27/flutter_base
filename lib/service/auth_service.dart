@@ -18,7 +18,7 @@ class AuthService with ChangeNotifier {
       autenticando = true;
 
       final HttpLink httpLink = HttpLink(
-        "http://localhost:8000/graphql/",
+        "https://centenitoo-irvingcm123.cloud.okteto.net/graphql/",
       );
 
       final GraphQLClient client = GraphQLClient(
@@ -62,7 +62,7 @@ class AuthService with ChangeNotifier {
 class SignUpService with ChangeNotifier {
   Future<List<Map<String, dynamic>>> getUsers() async {
     final HttpLink httpLink = HttpLink(
-      "http://localhost:8000/graphql/",
+      "https://centenitoo-irvingcm123.cloud.okteto.net/graphql/",
     );
 
     final GraphQLClient client = GraphQLClient(
@@ -96,7 +96,7 @@ class SignUpService with ChangeNotifier {
   Future<Map<String, Object>> createUser(
       String name, String password, String email) async {
     final HttpLink httpLink = HttpLink(
-      "http://localhost:8000/graphql/",
+      "https://centenitoo-irvingcm123.cloud.okteto.net/graphql/",
     );
 
     final GraphQLClient client = GraphQLClient(
@@ -142,7 +142,7 @@ class SignUpService with ChangeNotifier {
     );
 
     final HttpLink httpLink = HttpLink(
-      "http://localhost:8000/graphql/",
+      "https://centenitoo-irvingcm123.cloud.okteto.net/graphql/",
     );
 
     final Link link = authLink.concat(httpLink);
