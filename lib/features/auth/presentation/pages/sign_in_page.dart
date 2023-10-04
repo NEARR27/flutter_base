@@ -163,7 +163,7 @@ class _SignInPageState extends State<SignInPage> {
                 ),
                 style: ElevatedButton.styleFrom(
                   primary: Colors.orange, // Cambia el color del botón
-                  padding: EdgeInsets.symmetric(horizontal: 125, vertical: 22),
+                  padding: EdgeInsets.symmetric(horizontal: 125, vertical: 10),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(0),
                   ),
