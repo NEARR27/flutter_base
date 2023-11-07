@@ -5,6 +5,9 @@ import 'package:provider/provider.dart';
 ////////////////////
 import 'blog_row.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'retrain_page.dart'; // Asume que tu clase RetrainPage está en este archivo
+import 'pndb_page.dart';
+
 ////////////////////
 
 class MyApp extends StatelessWidget {
@@ -69,6 +72,12 @@ class _MyHomePageState extends State<MyHomePage> {
       case 2:
         page = FavoritesPage();
         break;
+      case 3:
+        page = RetrainPage();
+        break;
+      case 4: // O el siguiente índice disponible
+        page = ModelPage(); // Asume que tu ModelPage no requiere argumentos
+        break;
       default:
         throw UnimplementedError('no widget for $selectedIndex');
     }
@@ -82,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 destinations: [
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
-                    label: Text('Graphql'),
+                    label: Text('API'),
                   ),
                   NavigationRailDestination(
                     icon: Icon(Icons.home),
@@ -91,6 +100,14 @@ class _MyHomePageState extends State<MyHomePage> {
                   NavigationRailDestination(
                     icon: Icon(Icons.favorite),
                     label: Text('Favorites'),
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.autorenew),
+                    label: Text('Retrain'), // El nuevo destino
+                  ),
+                  NavigationRailDestination(
+                    icon: Icon(Icons.analytics),
+                    label: Text('Model'), // El nuevo destino
                   ),
                 ],
                 selectedIndex: selectedIndex,

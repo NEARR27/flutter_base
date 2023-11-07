@@ -22,12 +22,7 @@ class LandingPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 // Logo de tu app
-                Image.asset(
-                  'assets/images/Logo.jpg', // Reemplaza con la ruta de tu logo
-                  width: 250,
-                  height: 250,
-                ),
-                const SizedBox(height: 70),
+
                 ShaderMask(
                   shaderCallback: (Rect bounds) {
                     return LinearGradient(
@@ -38,7 +33,7 @@ class LandingPage extends StatelessWidget {
                     ).createShader(bounds);
                   },
                   child: Text(
-                    "Bienvenido a nuestra Aplicación",
+                    "Bienvenido ",
                     style: TextStyle(
                       fontSize: 18 * textScaleFactor,
                       color: Colors

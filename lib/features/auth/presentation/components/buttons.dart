@@ -66,7 +66,7 @@ class MyButtonTwo extends StatelessWidget {
       onPressed: onPressed,
       style: TextButton.styleFrom(
         minimumSize: const Size(double.infinity, 50),
-        backgroundColor:   Colors.orange, // Color del botón
+        backgroundColor:   Colors.blue, // Color del botón
       ),
       child: Text(
         text,

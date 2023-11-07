@@ -24,151 +24,158 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black, // Cambia el color de fondo aquí
+      backgroundColor: Colors.transparent, // Establece el fondo transparente para que la imagen de fondo sea visible
       resizeToAvoidBottomInset: false,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
-          child: Form(
-            key: _signUpGlobalKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 10),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Icon(
-                    Icons.chevron_left,
-                    size: 30,
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: NetworkImage("https://www.blogdelfotografo.com/wp-content/uploads/2021/12/Fondo_Negro_3.webp"), // Reemplaza con la URL de tu imagen de fondo
+            fit: BoxFit.cover, // Ajusta la imagen al tamaño del contenedor
+          ),
+        ),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 5),
+            child: Form(
+              key: _signUpGlobalKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const SizedBox(height: 10),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.chevron_left,
+                      size: 30,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 30),
-                ShaderMask(
-                  shaderCallback: (Rect bounds) {
-                    return LinearGradient(
-                      colors: [
-                        Colors.grey,
-                        Colors.white,
-                      ],
-                    ).createShader(bounds);
-                  },
-                  child: const Row(
-                    children: [
-                      SizedBox(width: 10),
-                      Text(
-                        "Crear Cuenta",
-                        style: TextStyle(
-                          fontSize: 40,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          // Color del texto
+                  const SizedBox(height: 30),
+                  ShaderMask(
+                    shaderCallback: (Rect bounds) {
+                      return LinearGradient(
+                        colors: [
+                          Colors.grey,
+                          Colors.white,
+                        ],
+                      ).createShader(bounds);
+                    },
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 10),
+                        Text(
+                          "Crear Cuenta",
+                          style: TextStyle(
+                            fontSize: 40,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.white,
+                          ),
                         ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  Column(
+                    children: [
+                      TextFormField(
+                        controller: emailController,
+                        validator: AuthValidator.isEmailValid,
+                        decoration: InputDecoration(
+                          hintText: "Email address",
+                          hintStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 30),
+                      TextFormField(
+                        controller: nameController,
+                        validator: AuthValidator.isNameValid,
+                        decoration: InputDecoration(
+                          hintText: "User name",
+                          hintStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 30),
+                      TextFormField(
+                        controller: passwordController,
+                        obscureText: passwordSee,
+                        validator: AuthValidator.isPasswordValid,
+                        decoration: InputDecoration(
+                          hintText: "Create password",
+                          hintStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              passwordSee = !passwordSee;
+                              setState(() {});
+                            },
+                            child: Icon(
+                              passwordSee
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 30),
+                      TextFormField(
+                        controller: passwordRetryController,
+                        obscureText: passwordSee2,
+                        validator: AuthValidator.isPasswordValid,
+                        decoration: InputDecoration(
+                          hintText: "Confirm password",
+                          hintStyle: TextStyle(color: Colors.white),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.grey),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              passwordSee2 = !passwordSee2;
+                              setState(() {});
+                            },
+                            child: Icon(
+                              passwordSee2
+                                  ? Icons.visibility_off_outlined
+                                  : Icons.visibility_outlined,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      const SizedBox(height: 30),
+                      MyButtonTwo(
+                        text: "Crear",
+                        onPressed: signUpButton,
                       ),
                     ],
                   ),
-                ),
-                const SizedBox(height: 30),
-                Column(
-                  children: [
-                    TextFormField(
-                      controller: emailController,
-                      validator: AuthValidator.isEmailValid,
-                      decoration: InputDecoration(
-                        hintText: "Email address",
-                        hintStyle: TextStyle(color: Colors.white), // Color del texto de sugerencia
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey), // Color de la línea
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white), // Color de la línea cuando está enfocado
-                        ),
-                      ),
-                      style: TextStyle(color: Colors.white), // Color del texto del campo
-                    ),
-                    const SizedBox(height: 30),
-                    TextFormField(
-                      controller: nameController,
-                      validator: AuthValidator.isNameValid,
-                      decoration: InputDecoration(
-                        hintText: "User name",
-                        hintStyle: TextStyle(color: Colors.white), // Color del texto de sugerencia
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey), // Color de la línea
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white), // Color de la línea cuando está enfocado
-                        ),
-                      ),
-                      style: TextStyle(color: Colors.white), // Color del texto del campo
-                    ),
-                    const SizedBox(height: 30),
-                    TextFormField(
-                      controller: passwordController,
-                      obscureText: passwordSee,
-                      validator: AuthValidator.isPasswordValid,
-                      decoration: InputDecoration(
-                        hintText: "Create password",
-                        hintStyle: TextStyle(color: Colors.white), // Color del texto de sugerencia
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey), // Color de la línea
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white), // Color de la línea cuando está enfocado
-                        ),
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            passwordSee = !passwordSee;
-                            setState(() {});
-                          },
-                          child: Icon(
-                            passwordSee
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: Colors.grey, // Color del icono de visibilidad
-                          ),
-                        ),
-                      ),
-                      style: TextStyle(color: Colors.white), // Color del texto del campo
-                    ),
-                    const SizedBox(height: 30),
-                    TextFormField(
-                      controller: passwordRetryController,
-                      obscureText: passwordSee2,
-                      validator: AuthValidator.isPasswordValid,
-                      decoration: InputDecoration(
-                        hintText: "Confirm password",
-                        hintStyle: TextStyle(color: Colors.white), // Color del texto de sugerencia
-                        enabledBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.grey), // Color de la línea
-                        ),
-                        focusedBorder: UnderlineInputBorder(
-                          borderSide: BorderSide(color: Colors.white), // Color de la línea cuando está enfocado
-                        ),
-                        suffixIcon: GestureDetector(
-                          onTap: () {
-                            passwordSee2 = !passwordSee2;
-                            setState(() {});
-                          },
-                          child: Icon(
-                            passwordSee2
-                                ? Icons.visibility_off_outlined
-                                : Icons.visibility_outlined,
-                            color: Colors.grey, // Color del icono de visibilidad
-                          ),
-                        ),
-                      ),
-                      style: TextStyle(color: Colors.white), // Color del texto del campo
-                    ),
-                    const SizedBox(height: 30),
-                    MyButtonTwo(
-                      text: "Crear",
-                      onPressed: signUpButton,
-                    ),
-                  ],
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
@@ -179,7 +186,7 @@ class _SignUpPageState extends State<SignUpPage> {
   Future<void> signUpButton() async {
     if (_signUpGlobalKey.currentState!.validate()) {
       try {
-        final Map<String, String> message = await authController.registration( // Añade await aquí
+        final Map<String, String> message = await authController.registration(
           nameController.text.trim(),
           emailController.text.trim(),
           passwordController.text.trim(),
